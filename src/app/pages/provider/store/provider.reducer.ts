@@ -2,20 +2,17 @@ import produce from 'immer';
 import * as providerActions from './provider.action';
 import {Provider} from '../../../services/provider.config';
 import {Item} from '../model/item.model';
-import {MatSort} from '@angular/material';
 
 export interface ProviderState {
     provider: Provider;
     items: Item[];
     okState: boolean;
-    sort: MatSort;
 }
 
 export const INITIAL_PROVIDER_STATE: ProviderState = {
     provider: undefined,
     items: [],
     okState: undefined,
-    sort: null
 };
 
 export function providerReducer(state: ProviderState = INITIAL_PROVIDER_STATE, action: providerActions.Actions) {
