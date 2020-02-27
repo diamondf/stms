@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Store} from '@ngrx/store';
@@ -20,7 +20,7 @@ export interface ProviderChoice {
     templateUrl: './provider.component.html',
     styleUrls: ['./provider.component.css']
 })
-export class ProviderComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ProviderComponent implements OnInit, AfterViewInit {
 
     providers: ProviderChoice[] = [
         {value: 'countries', label: 'Countries'},
@@ -57,10 +57,6 @@ export class ProviderComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngAfterViewInit() {
         this.dataSource.sort = this.sort;
-    }
-
-    ngOnDestroy() {
-        this.store.dispatch(new providerActions.ResetProviderAction());
     }
 
     isAllSelected() {
