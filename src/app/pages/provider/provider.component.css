@@ -1,0 +1,51 @@
+.example-container {
+    display: block;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.choose-provider {
+    margin: 20px;
+}
+
+.buttons {
+    margin: 10px 20px;
+}
+
+.go-button {
+    margin-left: 150px;
+}
+
+.mat-button {
+    background-color: lightblue;
+}
+
+.mat-radio-button {
+    margin: 7px;
+}
+
+.mat-column-select {
+    max-width: 45px;
+}
+
+.error-msg {
+    color: red;
+    background-color: #ffd3d5;
+    margin: 20px;
+    padding: 5px;
+}

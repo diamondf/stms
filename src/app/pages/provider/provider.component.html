@@ -1,0 +1,77 @@
+<div class="choose-provider">
+  <h4>Select provider</h4>
+  <mat-radio-group (change)="setProvider($event)" [value]="provider">
+    <mat-radio-button *ngFor="let provider of providers" [value]="provider.value">
+      {{provider.label}}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div class="buttons">
+  <button mat-button (click)="fetchItems()" [disabled] ="!provider">Fetch items</button>
+
+  <button routerLink="/favorites" routerLinkActive="active" mat-button class="go-button">Go to Favorites</button>
+</div>
+
+<div *ngIf="okState === false" class="error-msg">Request failed</div>
+
+<div class="example-container mat-elevation-z10">
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- Select Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? onChangeSelectionRow(row, $event) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+    </ng-container>
+
+    <!-- Url Column -->
+    <ng-container matColumnDef="url">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Url </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.url}} </mat-cell>
+    </ng-container>
+
+    <!-- Region Column -->
+    <ng-container matColumnDef="region">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Region </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.region}} </mat-cell>
+    </ng-container>
+
+    <!-- Subregion Column -->
+    <ng-container matColumnDef="subregion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Subregion </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.subregion}} </mat-cell>
+    </ng-container>
+
+    <!-- Capital Column -->
+    <ng-container matColumnDef="capital">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Capital </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.capital}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+</div>

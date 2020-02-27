@@ -1,0 +1,37 @@
+<div>
+    <button routerLink="/provider" routerLinkActive="active" mat-button>Back to provider</button>
+    <button mat-button (click)="removeFavorites()">Remove all</button>
+</div>
+
+<div class="example-container mat-elevation-z10">
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Provider Column -->
+        <ng-container matColumnDef="provider">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Provider </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.provider}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Comment Column -->
+        <ng-container matColumnDef="comment">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Comment </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.comment}} </mat-cell>
+        </ng-container>
+        
+        <!-- Change Comment Column -->
+        <ng-container matColumnDef="changeComment">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let row"><button mat-button (click)="openDialog(row)">Change comment</button></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>

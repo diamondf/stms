@@ -1,0 +1,23 @@
+
+<h2>{{name}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+
+    <input matInput min="0" max="100" placeholder="Input comment" formControlName="comment" value="{{comment}}">
+
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button class="mat-raised-button" (click)="save()">
+    Ok
+  </button>
+
+  <button class="mat-raised-button"  (click)="close()">
+    Close
+  </button>
+
+</mat-dialog-actions>
